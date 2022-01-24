@@ -1,0 +1,21 @@
+{
+    "name": "mf-team/yii2-kontur-api-gateway",
+    "description": "Client for working with api of Kontur",
+    "type": "library",
+    "require": {
+        "yiisoft/yii2": "^2.0",
+        "php": ">=7.2",
+        "yiisoft/yii2-httpclient": "~2.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "mfteam\\kontur\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ilia Rozinsky",
+            "email": "ilyha_roza@mail.ru"
+        }
+    ]
+}
