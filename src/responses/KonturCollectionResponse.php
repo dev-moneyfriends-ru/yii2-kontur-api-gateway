@@ -15,60 +15,40 @@ use yii\helpers\ArrayHelper;
  *
  * Class KonturApiCollection
  * @package mfteam\kontur\responses
+ *
+ * @method AbstractKonturBaseResponse[] getItems()
  */
-class KonturCollectionResponse
+class KonturCollectionResponse extends AbstractKonturBaseCollection
 {
     /**
-     * @var AbstractKonturBaseData[]
+     * @var string
      */
-    protected $items = [];
+    private $responseClassName;
 
     /**
-     * @param string $dataString
+     * @param string $responseClassName
      * @param array $data
      */
-    public function __construct(string $dataString, array $data = [])
+    public function __construct(string $responseClassName, array $data = [])
     {
-        $this->setItems($dataString, $data);
+        $this->responseClassName = $responseClassName;
+
+        parent::__construct($data);
     }
 
     /**
-     * @param string $dataString
      * @param array $data
      *
      * @return void
      */
-    public function setItems(string $dataString, array $data = [])
+    public function setItems(array $data = [])
     {
-        $data = array_filter($data, function ($datum) {
-            return
-                is_array($datum) === true &&
-                empty($datum) === false;
+        $responseClassName = $this->responseClassName;
+
+        $items = ArrayHelper::getColumn($data, function (array $datum) use ($responseClassName) {
+            return new $responseClassName($datum);
         });
 
-        $items = ArrayHelper::getColumn($data, function (array $datum) use ($dataString) {
-            return new $dataString($datum);
-        });
-
-        $this->items = array_values($items);
-    }
-
-    /**
-     * @return AbstractKonturBaseData[]
-     */
-    public function getItems(): array
-    {
-        return $this->items;
-    }
-
-    /**
-     * @return AbstractKonturBaseData|null
-     */
-    public function getFirstItem(): ?AbstractKonturBaseData
-    {
-        return
-            empty($this->items) === false ?
-                current($this->items) :
-                null;
+        parent::setItems($items);
     }
 }

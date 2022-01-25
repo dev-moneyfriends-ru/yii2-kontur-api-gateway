@@ -10,7 +10,6 @@ namespace mfteam\kontur\responses\req;
 
 use mfteam\kontur\responses\AbstractKonturBaseItem;
 use mfteam\kontur\responses\items\address\AddressItem;
-use mfteam\kontur\responses\items\company\CompanyHeadCollectionItem;
 use mfteam\kontur\responses\items\company\CompanyNameItem;
 
 /**
@@ -77,7 +76,7 @@ class ULReqItem extends AbstractKonturBaseItem
     protected $registrationDate;
 
     /**
-     * @var CompanyHeadCollectionItem|null
+     * @var HeadsReqCollection|null
      */
     protected $heads;
 
@@ -162,9 +161,9 @@ class ULReqItem extends AbstractKonturBaseItem
     }
 
     /**
-     * @return CompanyHeadCollectionItem|null
+     * @return HeadsReqCollection|null
      */
-    public function getHeads(): ?CompanyHeadCollectionItem
+    public function getHeads(): ?HeadsReqCollection
     {
         return $this->heads;
     }
@@ -198,6 +197,6 @@ class ULReqItem extends AbstractKonturBaseItem
      */
     public function setHeads(array $data = []): void
     {
-        $this->heads = new CompanyHeadCollectionItem($data);
+        $this->heads = new HeadsReqCollection($data);
     }
 }

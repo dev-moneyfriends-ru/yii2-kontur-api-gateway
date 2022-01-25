@@ -15,7 +15,7 @@ namespace mfteam\kontur\responses;
  * Class BaseResponse
  * @package mfteam\kontur\responses
  */
-abstract class AbstractKonturBaseData extends AbstractKonturBaseObject
+abstract class AbstractKonturBaseResponse extends AbstractKonturBaseObject
 {
 
 }

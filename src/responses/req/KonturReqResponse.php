@@ -8,8 +8,8 @@
 
 namespace mfteam\kontur\responses\req;
 
-use mfteam\kontur\responses\AbstractKonturBaseData;
-use mfteam\kontur\responses\items\BriefReportKonturResponse;
+use mfteam\kontur\responses\AbstractKonturBaseResponse;
+use mfteam\kontur\responses\items\brief\BriefReportItem;
 use mfteam\kontur\responses\items\ContactPhonesItem;
 
 /**
@@ -20,7 +20,7 @@ use mfteam\kontur\responses\items\ContactPhonesItem;
  *
  * @property-read null|ULReqItem $uL
  */
-class KonturReqResponse extends AbstractKonturBaseData
+class KonturReqResponse extends AbstractKonturBaseResponse
 {
     /**
      * @var string|null
@@ -43,7 +43,7 @@ class KonturReqResponse extends AbstractKonturBaseData
     protected $UL;
 
     /**
-     * @var BriefReportKonturResponse|null
+     * @var BriefReportItem|null
      */
     protected $briefReport;
 
@@ -53,9 +53,9 @@ class KonturReqResponse extends AbstractKonturBaseData
     protected $contactPhones;
 
     /**
-     * @return BriefReportKonturResponse|null
+     * @return BriefReportItem|null
      */
-    public function getBriefReport(): ?BriefReportKonturResponse
+    public function getBriefReport(): ?BriefReportItem
     {
         return $this->briefReport;
     }
@@ -113,7 +113,7 @@ class KonturReqResponse extends AbstractKonturBaseData
      */
     public function setBriefReport(array $data = []): void
     {
-        $this->briefReport = new BriefReportKonturResponse($data);
+        $this->briefReport = new BriefReportItem($data);
     }
 
     /**

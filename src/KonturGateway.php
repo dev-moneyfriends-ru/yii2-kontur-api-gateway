@@ -86,6 +86,28 @@ class KonturGateway
     }
 
     /**
+     * Расширенные сведения на основе ЕГРЮЛ/ЕГРИП
+     *
+     * @see https://developer.kontur.ru/doc/focus/method?type=get&path=%2Fapi3%2FegrDetails
+     *
+     * @param KonturRequestInterface $request
+     *
+     * @return KonturAnalyticsResponse[]
+     * @throws HttpException
+     * @throws KonturBadRequestException
+     * @throws KonturForbiddenException
+     * @throws KonturTooManyRequestException
+     */
+    public function egrDetails(KonturRequestInterface $request): array
+    {
+        $response = $this->get('egrDetails', $request->toArray());
+
+        return $this
+            ->createCollection($response, KonturAnalyticsResponse::class)
+            ->getItems();
+    }
+
+    /**
      * GET запрос
      *
      * @param string $path

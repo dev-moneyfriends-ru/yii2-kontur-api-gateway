@@ -6,7 +6,7 @@
  * Time: 15:24
  */
 
-namespace mfteam\kontur\responses\items;
+namespace mfteam\kontur\responses\items\misc;
 
 use mfteam\kontur\responses\AbstractKonturBaseItem;
 

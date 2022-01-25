@@ -8,7 +8,7 @@
 
 namespace mfteam\kontur\responses\analytics;
 
-use mfteam\kontur\responses\AbstractKonturBaseData;
+use mfteam\kontur\responses\AbstractKonturBaseResponse;
 
 /**
  * Расширенная аналитика
@@ -16,7 +16,7 @@ use mfteam\kontur\responses\AbstractKonturBaseData;
  * Class KonturAnalyticsData
  * @package mfteam\kontur\responses
  */
-class KonturAnalyticsResponse extends AbstractKonturBaseData
+class KonturAnalyticsResponse extends AbstractKonturBaseResponse
 {
     /**
      * @var string|null

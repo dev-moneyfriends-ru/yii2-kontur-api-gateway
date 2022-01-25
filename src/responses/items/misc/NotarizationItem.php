@@ -1,22 +1,16 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: itily
- * Date: 24.01.2022
- * Time: 15:24
- */
 
-namespace mfteam\kontur\responses\items\company;
+namespace mfteam\kontur\responses\items\misc;
 
 use mfteam\kontur\responses\AbstractKonturBaseItem;
 
 /**
- * Лица, имеющие право подписи без доверенности (руководители)
+ * Нотариус
  *
- * Class HeadItem
- * @package mfteam\kontur\responses\items
+ * Class PledgeNotarizationItem
+ * @package mfteam\kontur\responses\items\pledge
  */
-class CompanyHeadItem extends AbstractKonturBaseItem
+class NotarizationItem extends AbstractKonturBaseItem
 {
     /**
      * @var string|null
@@ -31,17 +25,12 @@ class CompanyHeadItem extends AbstractKonturBaseItem
     /**
      * @var string|null
      */
-    protected $position;
+    protected $contractNumber;
 
     /**
      * @var string|null
      */
     protected $date;
-
-    /**
-     * @var string|null
-     */
-    protected $firstDate;
 
     /**
      * @return string|null
@@ -62,9 +51,9 @@ class CompanyHeadItem extends AbstractKonturBaseItem
     /**
      * @return string|null
      */
-    public function getPosition(): ?string
+    public function getContractNumber(): ?string
     {
-        return $this->position;
+        return $this->contractNumber;
     }
 
     /**
@@ -73,13 +62,5 @@ class CompanyHeadItem extends AbstractKonturBaseItem
     public function getDate(): ?string
     {
         return $this->date;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getFirstDate(): ?string
-    {
-        return $this->firstDate;
     }
 }
