@@ -16,9 +16,7 @@ use yii\helpers\ArrayHelper;
 class PledgeCollection extends AbstractKonturBaseCollection
 {
     /**
-     * @param array $data
-     *
-     * @return void
+     * @inheritDoc
      */
     public function setItems(array $data = [])
     {
