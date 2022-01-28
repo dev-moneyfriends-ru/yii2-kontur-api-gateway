@@ -8,7 +8,10 @@
 
 namespace mfteam\kontur;
 
-use yii\httpclient\Response;
+use Exception;
+use mfteam\kontur\exceptions\KonturBadRequestException;
+use mfteam\kontur\exceptions\KonturForbiddenException;
+use mfteam\kontur\exceptions\KonturTooManyRequestException;
 
 /**
  * Общий интерфейс клиента Контур.Фокус
@@ -23,12 +26,16 @@ interface KonturApiClientInterface
      * @param array $headers
      * @param array $options
      *
-     * @return Response
+     * @return array
+     * @throws KonturBadRequestException
+     * @throws KonturForbiddenException
+     * @throws KonturTooManyRequestException
+     * @throws Exception
      */
     public function sendGetQuery(
         string $url,
         array $data = [],
         array $headers = [],
         array $options = []
-    ): Response;
+    ): array;
 }

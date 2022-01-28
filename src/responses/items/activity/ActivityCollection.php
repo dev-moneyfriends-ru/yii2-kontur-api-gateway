@@ -2,8 +2,8 @@
 
 namespace mfteam\kontur\responses\items\activity;
 
-use mfteam\kontur\responses\AbstractKonturBaseCollection;
-use yii\helpers\ArrayHelper;
+use mfteam\kontur\helpers\KonturResponseHelper;
+use mfteam\kontur\responses\AbstractBaseCollection;
 
 /**
  * Виды деятельности
@@ -11,19 +11,17 @@ use yii\helpers\ArrayHelper;
  * Class ActivityCollection
  * @package mfteam\kontur\responses\items\activity
  *
- * @method ActivityItem[] getItems()
+ * @method Activity[] getItems()
  */
-class ActivityCollection extends AbstractKonturBaseCollection
+class ActivityCollection extends AbstractBaseCollection
 {
     /**
      * @inheritDoc
      */
     public function setItems(array $data = [])
     {
-        $items = ArrayHelper::getColumn($data, function (array $datum) {
-            return new ActivityItem($datum);
-        });
+        $data = KonturResponseHelper::instanceRecursiveData(Activity::class, $data);
 
-        parent::setItems($items);
+        parent::setItems($data);
     }
 }

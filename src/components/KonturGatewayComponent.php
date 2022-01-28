@@ -9,6 +9,7 @@
 namespace mfteam\kontur\components;
 
 use mfteam\kontur\KonturGateway;
+use mfteam\kontur\KonturGatewayFactory;
 use yii\base\Component;
 use yii\base\InvalidConfigException;
 
@@ -58,5 +59,15 @@ class KonturGatewayComponent extends Component
     {
         $apiKey = $this->apiKey;
         $this->gateway = KonturGatewayFactory::instanceHttp($apiKey);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function __call($name, $params)
+    {
+        $gateway = $this->gateway;
+
+        return $gateway->$name($params);
     }
 }

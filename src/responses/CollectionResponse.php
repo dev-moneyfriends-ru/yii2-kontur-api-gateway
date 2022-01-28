@@ -8,17 +8,20 @@
 
 namespace mfteam\kontur\responses;
 
-use yii\helpers\ArrayHelper;
+use mfteam\kontur\helpers\KonturResponseHelper;
+use ReflectionClass;
+use ReflectionException;
+use yii\base\InvalidArgumentException;
 
 /**
- * Коллекция моделей ответа от КонтураюФокус
+ * Коллекция моделей ответа
  *
  * Class KonturApiCollection
  * @package mfteam\kontur\responses
  *
- * @method AbstractKonturBaseResponse[] getItems()
+ * @method ResponseInterface[] getItems()
  */
-class KonturCollectionResponse extends AbstractKonturBaseCollection
+class CollectionResponse extends AbstractBaseCollection
 {
     /**
      * @var string
@@ -26,12 +29,14 @@ class KonturCollectionResponse extends AbstractKonturBaseCollection
     private $responseClassName;
 
     /**
+     * @@inheritDoc
+     *
      * @param string $responseClassName
      * @param array $data
      */
     public function __construct(string $responseClassName, array $data = [])
     {
-        $this->responseClassName = $responseClassName;
+        $this::setResponseClass($responseClassName);
 
         parent::__construct($data);
     }
@@ -42,11 +47,31 @@ class KonturCollectionResponse extends AbstractKonturBaseCollection
     public function setItems(array $data = [])
     {
         $responseClassName = $this->responseClassName;
+        $data = KonturResponseHelper::instanceRecursiveData($responseClassName, $data);
 
-        $items = ArrayHelper::getColumn($data, function (array $datum) use ($responseClassName) {
-            return new $responseClassName($datum);
-        });
+        parent::setItems($data);
+    }
 
-        parent::setItems($items);
+    /**
+     * Установка класса ответ
+     *
+     * @param string $responseClassName
+     *
+     * @return void
+     */
+    private function setResponseClass(string $responseClassName)
+    {
+        try {
+            $ref = new ReflectionClass($responseClassName);
+            $inst = $ref->newInstanceWithoutConstructor();
+        } catch (ReflectionException $exception) {
+            throw new InvalidArgumentException("$responseClassName not exist");
+        }
+
+        if (($inst instanceof ResponseInterface) === false) {
+            throw new InvalidArgumentException('ResponseClassName must be instance of KonturResponseInterface.');
+        }
+
+        $this->responseClassName = $responseClassName;
     }
 }

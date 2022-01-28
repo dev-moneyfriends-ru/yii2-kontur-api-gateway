@@ -2,8 +2,8 @@
 
 namespace mfteam\kontur\responses\items\pledge;
 
-use mfteam\kontur\responses\AbstractKonturBaseCollection;
-use yii\helpers\ArrayHelper;
+use mfteam\kontur\helpers\KonturResponseHelper;
+use mfteam\kontur\responses\AbstractBaseCollection;
 
 /**
  * Сведения об обременении доли участника
@@ -11,19 +11,17 @@ use yii\helpers\ArrayHelper;
  * Class PledgeCollection
  * @package mfteam\kontur\responses\items\misc
  *
- * @method PledgeItem[] getItems()
+ * @method Pledge[] getItems()
  */
-class PledgeCollection extends AbstractKonturBaseCollection
+class PledgeCollection extends AbstractBaseCollection
 {
     /**
      * @inheritDoc
      */
     public function setItems(array $data = [])
     {
-        $items = ArrayHelper::getColumn($data, function (array $datum) {
-            return new PledgeItem($datum);
-        });
+        $data = KonturResponseHelper::instanceRecursiveData(Pledge::class, $data);
 
-        parent::setItems($items);
+        parent::setItems($data);
     }
 }

@@ -8,11 +8,12 @@
 
 namespace mfteam\kontur;
 
+use Exception;
+use mfteam\kontur\exceptions\KonturBadRequestException;
+use mfteam\kontur\exceptions\KonturForbiddenException;
+use mfteam\kontur\exceptions\KonturTooManyRequestException;
 use yii\httpclient\Client;
-use yii\httpclient\Exception;
-use yii\httpclient\Request;
 use yii\httpclient\RequestEvent;
-use yii\httpclient\Response;
 
 /**
  * Клиент работы с API Контура
@@ -71,19 +72,33 @@ class KonturHttpClient extends Client implements KonturApiClientInterface
 
     /**
      * @inheritDoc
-     * @throws Exception
      */
     public function sendGetQuery(
         string $url,
         array  $data = [],
         array  $headers = [],
         array  $options = []
-    ): Response
+    ): array
     {
-        return $this
+        $response = $this
             ->get($url, $data, $headers, $options)
             ->send();
+
+        if ($response->isOk === true) {
+            return $response->getData();
+        }
+
+        $content = $response->content;
+
+        switch ($response->statusCode) {
+            case 400:
+                throw new KonturBadRequestException($content);
+            case 403:
+                throw new KonturForbiddenException($content);
+            case 429:
+                throw new KonturTooManyRequestException($content);
+            default:
+                throw new Exception('Unexpected error');
+        }
     }
-
-
 }
