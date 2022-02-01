@@ -8,6 +8,8 @@
 
 namespace mfteam\kontur\responses\req;
 
+use DateTime;
+use Exception;
 use mfteam\kontur\responses\AbstractCompanyResponse;
 use mfteam\kontur\responses\items\brief\BriefReport;
 use mfteam\kontur\responses\items\misc\CountContactPhones;
@@ -107,5 +109,44 @@ class ReqResponse extends AbstractCompanyResponse
     public function setIP(array $data = []): void
     {
         $this->IP = new IPReq($data);
+    }
+
+    /**
+     * Дата регистрации
+     *
+     * @return string|null
+     */
+    public function getRegistrationDate(): ?string
+    {
+        $item = empty($this->UL) === false ? $this->UL : $this->IP;
+
+        if (empty($item) === true) {
+            return null;
+        }
+
+        return $item->getRegistrationDate();
+    }
+
+    /**
+     * Возраст компании в годах
+     *
+     * @param string $currentDate
+     * @return int|null
+     * @throws Exception
+     */
+    public function getOldYearCompany(string $currentDate = 'NOW'): ?int
+    {
+        $registrationDate = $this->getRegistrationDate();
+
+        if ($registrationDate === null) {
+            return null;
+        }
+
+        $currentDateTime = new DateTime($currentDate);
+        $registrationDateTime = new DateTime($registrationDate);
+
+        $diff = $currentDateTime->diff($registrationDateTime);
+
+        return $diff->y;
     }
 }

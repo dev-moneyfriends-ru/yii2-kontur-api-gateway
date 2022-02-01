@@ -38,4 +38,19 @@ class PetitionersOfArbitrationResponse extends AbstractCompanyResponse
     {
         $this->petitioners = new PetitionerOfArbitrationCollection($data);
     }
+
+    /**
+     * Имеются
+     *
+     * @return bool
+     */
+    public function hasPetitioners(): bool
+    {
+        $petitioners = $this->petitioners;
+        if ($petitioners === null) {
+            return false;
+        }
+
+        return $petitioners->isEmpty() === false;
+    }
 }

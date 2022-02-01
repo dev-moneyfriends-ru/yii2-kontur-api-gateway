@@ -136,4 +136,16 @@ class CompanyBankruptcyResponse extends AbstractCompanyResponse
     {
         $this->messages = new MessageCollection($data);
     }
+
+    /**
+     * Является банкротом
+     *
+     * @return bool
+     */
+    public function isBankrupt(): bool
+    {
+        return
+            empty($this->caseNumber) === false ||
+            empty($this->acceptanceDate) === false;
+    }
 }

@@ -39,4 +39,34 @@ class AnalyticsResponse extends AbstractCompanyResponse
     {
         $this->analytics = new Analytics($data);
     }
+
+    /**
+     * Имеются признаки банкротства
+     *
+     * @return bool
+     */
+    public function hasBankruptMark(): bool
+    {
+        $analytics = $this->analytics;
+        if (empty($analytics) === true) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Имеются признаки арбитражных дел
+     *
+     * @return bool
+     */
+    public function hasArbitrationMark(): bool
+    {
+        $analytics = $this->analytics;
+        if (empty($analytics) === true) {
+            return false;
+        }
+
+        return true;
+    }
 }
