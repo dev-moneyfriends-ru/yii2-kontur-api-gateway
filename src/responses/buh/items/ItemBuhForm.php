@@ -18,6 +18,15 @@ use mfteam\kontur\responses\AbstractBaseItem;
  */
 class ItemBuhForm extends AbstractBaseItem
 {
+    /** @var int Код итоговой суммы баланса */
+    const CODE_BALANCE = 1300;
+
+    /** @var int Код выручки с продаж */
+    const CODE_PROFIT = 2110;
+
+    /** @var int Код чистой прибыли */
+    const CODE_NET_PROFIT = 2410;
+
     /**
      * @var int|null
      */
@@ -68,5 +77,18 @@ class ItemBuhForm extends AbstractBaseItem
     public function getEndValue(): ?int
     {
         return $this->endValue;
+    }
+
+    /**
+     * Разность начальной и конечной суммы
+     *
+     * @return int
+     */
+    public function getDiffValue(): int
+    {
+        $startAmount = $this->startValue ?? 0;
+        $endAmount = $this->endValue ?? 0;
+
+        return round($endAmount - $startAmount);
     }
 }

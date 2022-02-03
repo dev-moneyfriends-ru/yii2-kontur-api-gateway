@@ -49,10 +49,29 @@ abstract class AbstractBaseCollection
      */
     public function getFirstItem(): ?AbstractBaseObject
     {
-        return
-            $this->isEmpty() === false ?
-                current($this->items) :
-                null;
+        if ($this->isEmpty() === true) {
+            return null;
+        }
+
+        reset($this->items);
+
+        return current($this->items);
+    }
+
+    /**
+     * Последний элемент коллекции
+     *
+     * @return AbstractBaseObject|null
+     */
+    public function getLastItem(): ?AbstractBaseObject
+    {
+        if ($this->isEmpty() === true) {
+            return null;
+        }
+
+        reset($this->items);
+
+        return end($this->items);
     }
 
     /**

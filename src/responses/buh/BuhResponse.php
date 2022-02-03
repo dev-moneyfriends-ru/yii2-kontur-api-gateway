@@ -8,7 +8,9 @@
 
 namespace mfteam\kontur\responses\buh;
 
+use mfteam\kontur\responses\AbstractBaseObject;
 use mfteam\kontur\responses\AbstractCompanyResponse;
+use mfteam\kontur\responses\buh\items\BuhForm;
 use mfteam\kontur\responses\buh\items\BuhFormCollection;
 
 /**
@@ -38,5 +40,23 @@ class BuhResponse extends AbstractCompanyResponse
     public function setBuhForms(array $data = []): void
     {
         $this->buhForms = new BuhFormCollection($data);
+    }
+
+    /**
+     * Последний год
+     *
+     * @return AbstractBaseObject|null
+     */
+    public function getLastBuhYear(): ?BuhForm
+    {
+        $buhForms = $this->buhForms;
+        if (
+            $buhForms === null ||
+            $buhForms->isEmpty() === true
+        ) {
+            return null;
+        }
+
+        return $buhForms->getLastItem();
     }
 }

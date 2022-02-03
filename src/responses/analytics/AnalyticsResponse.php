@@ -69,4 +69,102 @@ class AnalyticsResponse extends AbstractCompanyResponse
 
         return true;
     }
+
+    /**
+     * Имеются гос. контракты
+     *
+     * @return bool
+     */
+    public function hasGosContracts(): bool
+    {
+        $analytics = $this->analytics;
+
+        if (empty($analytics) === true) {
+            return false;
+        }
+
+        return
+            $analytics->getQ4003() !== null &&
+            $analytics->getQ4003() > 0;
+    }
+
+    /**
+     * Вхождение в реестр недобросовестных поставщиков
+     *
+     * @return bool
+     */
+    public function intoRegisterUnscrupulous(): bool
+    {
+        $analytics = $this->analytics;
+
+        if (empty($analytics) === true) {
+            return false;
+        }
+
+        return (bool)$analytics->getM4001();
+    }
+
+    /**
+     * Директор или основатель дисквалифицирован
+     *
+     * @return bool
+     */
+    public function hasSubjectIsDisqualified(): bool
+    {
+        $analytics = $this->analytics;
+
+        if (empty($analytics) === true) {
+            return false;
+        }
+
+        return (bool)$analytics->getM5008();
+    }
+
+    /**
+     * Директор или основатель банкрот
+     *
+     * @return bool
+     */
+    public function hasSubjectIsBankrupt(): bool
+    {
+        $analytics = $this->analytics;
+
+        if (empty($analytics) === true) {
+            return false;
+        }
+
+        return (bool)$analytics->getM7026();
+    }
+
+    /**
+     * Имеется задолженность по налогам
+     *
+     * @return bool
+     */
+    public function hasTaxArrears(): bool
+    {
+        $analytics = $this->analytics;
+
+        if (empty($analytics) === true) {
+            return false;
+        }
+
+        return (bool)$analytics->getM5004();
+    }
+
+    /**
+     * Имеются аресты
+     *
+     * @return bool
+     */
+    public function hasArrest(): bool
+    {
+        $analytics = $this->analytics;
+
+        if (empty($analytics) === true) {
+            return false;
+        }
+
+        return (bool)$analytics->getM1004();
+    }
 }

@@ -15,6 +15,11 @@ use mfteam\kontur\responses\AbstractBaseItem;
  *
  * Class BuhForm
  * @package mfteam\kontur\responses\buh\items
+ *
+ * @property-read null|int $sufficientProfitAmount
+ * @property-read null|int $sufficientNetProfitAmount
+ * @property-read null|int $sufficientBalanceAmount
+ * @property-read null|int $sufficientBalanceEnd
  */
 class BuhForm extends AbstractBaseItem
 {
@@ -93,5 +98,74 @@ class BuhForm extends AbstractBaseItem
     public function setForm2(array $data = []): void
     {
         $this->form2 = new ItemBuhFormCollection($data);
+    }
+
+    /**
+     * Сумма итогового баланса
+     *
+     * @return int|null
+     */
+    public function getSufficientBalanceAmount(): ?int
+    {
+        $form = $this->form1;
+        if ($form === null) {
+            return null;
+        }
+
+        foreach ($form->getItems() as $item) {
+            $code = (int)$item->getCode();
+
+            if ($code === ItemBuhForm::CODE_BALANCE) {
+                return $item->getDiffValue();
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Сумма продаж
+     *
+     * @return int|null
+     */
+    public function getSufficientProfitAmount(): ?int
+    {
+        $form = $this->form2;
+        if ($form === null) {
+            return null;
+        }
+
+        foreach ($form->getItems() as $item) {
+            $code = (int)$item->getCode();
+
+            if ($code === ItemBuhForm::CODE_PROFIT) {
+                return $item->getDiffValue();
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Сумма чистой прибыли
+     *
+     * @return int|null
+     */
+    public function getSufficientNetProfitAmount(): ?int
+    {
+        $form = $this->form2;
+        if ($form === null) {
+            return null;
+        }
+
+        foreach ($form->getItems() as $item) {
+            $code = (int)$item->getCode();
+
+            if ($code === ItemBuhForm::CODE_NET_PROFIT) {
+                return $item->getDiffValue();
+            }
+        }
+
+        return null;
     }
 }
