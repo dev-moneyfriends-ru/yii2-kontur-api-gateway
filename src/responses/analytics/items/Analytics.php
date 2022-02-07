@@ -2072,4 +2072,75 @@ class Analytics extends AbstractBaseItem
     {
         return $this->q1102;
     }
+
+    /**
+     * Имеются маркеры арбитражных дел
+     *
+     * @return bool
+     */
+    public function hasArbitrationMarkers(): bool
+    {
+        $markers = [
+            'q2001',
+            'q2002',
+            'q2011',
+            'q2012',
+            'q2013',
+            'q2014',
+            'q2015',
+            'q2016',
+            'q2017',
+            'q2018',
+            'q2019',
+            'q2032',
+            'q2033',
+            'q2034',
+            'q2035',
+        ];
+
+        foreach ($markers as $marker) {
+            if (
+                $this->$marker !== null &&
+                (int)$this->$marker > 0
+            ) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Имеются маркеры банкротства
+     *
+     * @return bool
+     */
+    public function hasBankruptMarkers(): bool
+    {
+        if (
+            $this->q2031 !== null &&
+            $this->q2031 > 0
+        ) {
+            return true;
+        }
+
+        $markers = [
+            'm7014',
+            'm7015',
+            'm7016',
+            'm7022',
+            'm7026',
+        ];
+
+        foreach ($markers as $marker) {
+            if (
+                $this->$marker !== null &&
+                (bool)$this->$marker === true
+            ) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

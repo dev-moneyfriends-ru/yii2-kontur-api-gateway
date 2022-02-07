@@ -9,10 +9,6 @@
 namespace mfteam\kontur;
 
 use Exception;
-use mfteam\kontur\exceptions\KonturBadRequestException;
-use mfteam\kontur\exceptions\KonturForbiddenException;
-use mfteam\kontur\exceptions\KonturTooManyRequestException;
-
 /**
  * Общий интерфейс клиента Контур.Фокус
  */
@@ -27,9 +23,6 @@ interface KonturApiClientInterface
      * @param array $options
      *
      * @return array
-     * @throws KonturBadRequestException
-     * @throws KonturForbiddenException
-     * @throws KonturTooManyRequestException
      * @throws Exception
      */
     public function sendGetQuery(
@@ -38,4 +31,22 @@ interface KonturApiClientInterface
         array $headers = [],
         array $options = []
     ): array;
+
+    /**
+     * GET запрос на скачивание файла
+     *
+     * @param string $url
+     * @param array $data
+     * @param array $headers
+     * @param array $options
+     *
+     * @return string
+     * @throws Exception
+     */
+    public function sendDownloadQuery(
+        string $url,
+        array $data = [],
+        array $headers = [],
+        array $options = []
+    ): string;
 }

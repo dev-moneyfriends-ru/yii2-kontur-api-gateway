@@ -11,6 +11,7 @@ namespace mfteam\kontur;
 use Exception;
 use mfteam\kontur\exceptions\KonturBadRequestException;
 use mfteam\kontur\exceptions\KonturForbiddenException;
+use mfteam\kontur\exceptions\KonturNotFoundException;
 use mfteam\kontur\exceptions\KonturTooManyRequestException;
 use mfteam\kontur\requests\company\CompanyRequestInterface;
 use mfteam\kontur\requests\DateRequest;
@@ -25,6 +26,7 @@ use mfteam\kontur\responses\check_passport\CheckPassportResponse;
 use mfteam\kontur\responses\company_bankruptcy\CompanyBankruptcyResponse;
 use mfteam\kontur\responses\contacts\ContactsResponse;
 use mfteam\kontur\responses\egrl_detail\EgrlDetailResponse;
+use mfteam\kontur\responses\excerpt\ExcerptResponse;
 use mfteam\kontur\responses\finan_values\FinanValuesResponse;
 use mfteam\kontur\responses\fns_blocked_bank_accounts\FnsBlockedBankAccountsResponse;
 use mfteam\kontur\responses\founders_history\FoundersHistoryResponse;
@@ -635,6 +637,29 @@ class KonturGateway
     }
 
     /**
+     * Выписка из ЕГРЮЛ/ЕГРИП
+     *
+     * @see https://developer.kontur.ru/doc/focus/method?type=get&path=%2Fapi3%2Fexcerpt
+     *
+     * @param CompanyRequestInterface $request
+     *
+     * @return ExcerptResponse
+     * @throws KonturBadRequestException
+     * @throws KonturForbiddenException
+     * @throws KonturTooManyRequestException
+     * @throws KonturNotFoundException
+     * @throws Exception
+     */
+    public function excerpt(CompanyRequestInterface $request): ExcerptResponse
+    {
+        $content = $this->download('excerpt', $request->toArray());
+
+        return new ExcerptResponse([
+            'content' => $content,
+        ]);
+    }
+
+    /**
      * Информация о банкротстве ФЛ
      *
      * @see https://developer.kontur.ru/doc/focus/method?type=get&path=%2Fapi3%2FpersonBankruptcy
@@ -756,6 +781,26 @@ class KonturGateway
         return $this
             ->apiClient
             ->sendGetQuery($path, $data);
+    }
+
+    /**
+     * GET запрос
+     *
+     * @param string $path
+     * @param array $data
+     *
+     * @return string
+     * @throws KonturBadRequestException
+     * @throws KonturForbiddenException
+     * @throws KonturTooManyRequestException
+     * @throws KonturNotFoundException
+     * @throws Exception
+     */
+    private function download(string $path, array $data = []): string
+    {
+        return $this
+            ->apiClient
+            ->sendDownloadQuery($path, $data);
     }
 
     /**

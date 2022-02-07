@@ -11,9 +11,11 @@ namespace mfteam\kontur;
 use Exception;
 use mfteam\kontur\exceptions\KonturBadRequestException;
 use mfteam\kontur\exceptions\KonturForbiddenException;
+use mfteam\kontur\exceptions\KonturNotFoundException;
 use mfteam\kontur\exceptions\KonturTooManyRequestException;
 use yii\httpclient\Client;
 use yii\httpclient\RequestEvent;
+use yii\httpclient\Response;
 
 /**
  * Клиент работы с API Контура
@@ -88,6 +90,44 @@ class KonturHttpClient extends Client implements KonturApiClientInterface
             return $response->getData();
         }
 
+        $this->responseFailure($response);
+    }
+
+    /**
+     * @inheritDoc
+     * @throws KonturNotFoundException
+     */
+    public function sendDownloadQuery(
+        string $url,
+        array  $data = [],
+        array  $headers = [],
+        array  $options = []
+    ): string
+    {
+        $response = $this
+            ->get($url, $data, $headers, $options)
+            ->send();
+
+        if ($response->isOk === true) {
+            return $response->content;
+        }
+
+        $this->responseFailure($response);
+    }
+
+    /**
+     * Обработка ошибки ответа
+     *
+     * @param Response $response
+     *
+     * @throws KonturBadRequestException
+     * @throws KonturForbiddenException
+     * @throws KonturNotFoundException
+     * @throws KonturTooManyRequestException
+     * @throws Exception
+     */
+    private function responseFailure(Response $response)
+    {
         $content = $response->content;
 
         switch ($response->statusCode) {
@@ -95,6 +135,8 @@ class KonturHttpClient extends Client implements KonturApiClientInterface
                 throw new KonturBadRequestException($content);
             case 403:
                 throw new KonturForbiddenException($content);
+            case 404:
+                throw new KonturNotFoundException($content);
             case 429:
                 throw new KonturTooManyRequestException($content);
             default:

@@ -45,14 +45,14 @@ class AnalyticsResponse extends AbstractCompanyResponse
      *
      * @return bool
      */
-    public function hasBankruptMark(): bool
+    public function hasBankrupt(): bool
     {
         $analytics = $this->analytics;
         if (empty($analytics) === true) {
             return false;
         }
 
-        return true;
+        return $analytics->hasBankruptMarkers();
     }
 
     /**
@@ -60,14 +60,14 @@ class AnalyticsResponse extends AbstractCompanyResponse
      *
      * @return bool
      */
-    public function hasArbitrationMark(): bool
+    public function hasArbitration(): bool
     {
         $analytics = $this->analytics;
         if (empty($analytics) === true) {
             return false;
         }
 
-        return true;
+        return $analytics->hasArbitrationMarkers();
     }
 
     /**
@@ -166,5 +166,38 @@ class AnalyticsResponse extends AbstractCompanyResponse
         }
 
         return (bool)$analytics->getM1004();
+    }
+
+    /**
+     * Имеются исполнительные производства
+     *
+     * @return bool
+     */
+    public function hasFssp(): bool
+    {
+        $analytics = $this->analytics;
+        if (empty($analytics) === true) {
+            return false;
+        }
+
+        return
+            $analytics->getQ1002() !== null &&
+            $analytics->getQ1002() > 0;
+    }
+
+    /**
+     * Сумма по исполнительным производствам
+     *
+     * @return float|int
+     */
+    public function getFsspAmount(): float
+    {
+        if ($this->hasFssp() === false) {
+            return 0;
+        }
+
+        return $this
+            ->analytics
+            ->getS1002();
     }
 }
