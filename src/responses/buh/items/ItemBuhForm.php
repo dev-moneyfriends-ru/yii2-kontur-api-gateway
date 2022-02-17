@@ -15,6 +15,8 @@ use mfteam\kontur\responses\AbstractBaseItem;
  *
  * Class ItemBuhForm
  * @package mfteam\kontur\responses\buh\items
+ *
+ * @property-read int $diffValue
  */
 class ItemBuhForm extends AbstractBaseItem
 {
@@ -25,7 +27,16 @@ class ItemBuhForm extends AbstractBaseItem
     const CODE_PROFIT = 2110;
 
     /** @var int Код чистой прибыли */
-    const CODE_NET_PROFIT = 2410;
+    const CODE_NET_PROFIT = 2400;
+
+    /** @var int Код налога на прибыль */
+    const CODE_TAX_NET_PROFIT = 2410;
+
+    /** @var int Код прибыли до налогообложения */
+    const CODE_NET_PROFIT_BEFORE_TAX = 2300;
+
+    /** @var int Код прибыли от продаж */
+    const CODE_PROFIT_SALE = 2200;
 
     /**
      * @var int|null
@@ -89,6 +100,6 @@ class ItemBuhForm extends AbstractBaseItem
         $startAmount = $this->startValue ?? 0;
         $endAmount = $this->endValue ?? 0;
 
-        return round($endAmount - $startAmount);
+        return round(abs($endAmount) - abs($startAmount));
     }
 }

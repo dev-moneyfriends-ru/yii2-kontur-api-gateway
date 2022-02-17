@@ -19,6 +19,7 @@ use mfteam\kontur\responses\AbstractBaseItem;
  * @property-read null|int $sufficientProfitAmount
  * @property-read null|int $sufficientNetProfitAmount
  * @property-read null|int $sufficientBalanceAmount
+ * @property-read null|int $sufficientTaxNetProfitAmount
  * @property-read null|int $sufficientBalanceEnd
  */
 class BuhForm extends AbstractBaseItem
@@ -29,7 +30,7 @@ class BuhForm extends AbstractBaseItem
     /** @var string */
     public const SMALL = 'Small';
 
-    /** @var string  */
+    /** @var string */
     public const LARGE = 'Large';
 
     /**
@@ -162,6 +163,75 @@ class BuhForm extends AbstractBaseItem
             $code = (int)$item->getCode();
 
             if ($code === ItemBuhForm::CODE_NET_PROFIT) {
+                return $item->getDiffValue();
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Сумма налога на прибыль
+     *
+     * @return int|null
+     */
+    public function getTaxProfitAmount(): ?int
+    {
+        $form = $this->form2;
+        if ($form === null) {
+            return null;
+        }
+
+        foreach ($form->getItems() as $item) {
+            $code = (int)$item->getCode();
+
+            if ($code === ItemBuhForm::CODE_TAX_NET_PROFIT) {
+                return $item->getDiffValue();
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Прибыль до налогооблажения
+     *
+     * @return int|null
+     */
+    public function getProfitBeforeApplyTaxAmount(): ?int
+    {
+        $form = $this->form2;
+        if ($form === null) {
+            return null;
+        }
+
+        foreach ($form->getItems() as $item) {
+            $code = (int)$item->getCode();
+
+            if ($code === ItemBuhForm::CODE_NET_PROFIT_BEFORE_TAX) {
+                return $item->getDiffValue();
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Прибыль от продаж
+     *
+     * @return int|null
+     */
+    public function getProfitFromSalesAmount(): ?int
+    {
+        $form = $this->form2;
+        if ($form === null) {
+            return null;
+        }
+
+        foreach ($form->getItems() as $item) {
+            $code = (int)$item->getCode();
+
+            if ($code === ItemBuhForm::CODE_PROFIT_SALE) {
                 return $item->getDiffValue();
             }
         }
