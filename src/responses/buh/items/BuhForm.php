@@ -117,7 +117,7 @@ class BuhForm extends AbstractBaseItem
             $code = (int)$item->getCode();
 
             if ($code === ItemBuhForm::CODE_BALANCE) {
-                return $item->getDiffValue();
+                return $item->getEndValue();
             }
         }
 
@@ -140,7 +140,7 @@ class BuhForm extends AbstractBaseItem
             $code = (int)$item->getCode();
 
             if ($code === ItemBuhForm::CODE_PROFIT) {
-                return $item->getDiffValue();
+                return $item->getEndValue();
             }
         }
 
@@ -163,7 +163,7 @@ class BuhForm extends AbstractBaseItem
             $code = (int)$item->getCode();
 
             if ($code === ItemBuhForm::CODE_NET_PROFIT) {
-                return $item->getDiffValue();
+                return $item->getEndValue();
             }
         }
 
@@ -186,7 +186,7 @@ class BuhForm extends AbstractBaseItem
             $code = (int)$item->getCode();
 
             if ($code === ItemBuhForm::CODE_TAX_NET_PROFIT) {
-                return $item->getDiffValue();
+                return $item->getEndValue();
             }
         }
 
@@ -209,7 +209,7 @@ class BuhForm extends AbstractBaseItem
             $code = (int)$item->getCode();
 
             if ($code === ItemBuhForm::CODE_NET_PROFIT_BEFORE_TAX) {
-                return $item->getDiffValue();
+                return $item->getEndValue();
             }
         }
 
@@ -232,7 +232,7 @@ class BuhForm extends AbstractBaseItem
             $code = (int)$item->getCode();
 
             if ($code === ItemBuhForm::CODE_PROFIT_SALE) {
-                return $item->getDiffValue();
+                return $item->getEndValue();
             }
         }
 
