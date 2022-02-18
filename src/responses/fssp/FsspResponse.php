@@ -8,8 +8,8 @@
 
 namespace mfteam\kontur\responses\fssp;
 
-use common\modules\fssp\items\ItemFsspCollection;
 use mfteam\kontur\responses\AbstractCompanyResponse;
+use mfteam\kontur\responses\fssp\items\ItemFsspCollection;
 
 /**
  * Исполнительные производства

@@ -6,7 +6,7 @@
  * Time: 15:03
  */
 
-namespace common\modules\fssp\items;
+namespace mfteam\kontur\responses\fssp\items;
 
 use mfteam\kontur\responses\AbstractBaseItem;
 
@@ -14,7 +14,7 @@ use mfteam\kontur\responses\AbstractBaseItem;
  * Исполнительное производство
  *
  * Class ItemFssp
- * @package common\modules\fssp\items
+ * @package mfteam\kontur\responses\fssp\items
  */
 class ItemFssp extends AbstractBaseItem
 {

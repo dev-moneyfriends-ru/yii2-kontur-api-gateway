@@ -6,7 +6,7 @@
  * Time: 15:06
  */
 
-namespace common\modules\fssp\items;
+namespace mfteam\kontur\responses\fssp\items;
 
 use mfteam\kontur\helpers\KonturResponseHelper;
 use mfteam\kontur\responses\AbstractBaseCollection;
@@ -15,7 +15,7 @@ use mfteam\kontur\responses\AbstractBaseCollection;
  * Исполнительные производства
  *
  * Class ItemFsspCollection
- * @package common\modules\fssp\items
+ * @package mfteam\kontur\responses\fssp\items
  *
  * @method ItemFssp[] getItems()
  */
