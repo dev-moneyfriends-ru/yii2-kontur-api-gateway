@@ -56,4 +56,19 @@ class AddressTopo extends AbstractBaseItem
     {
         return $this->topoValue;
     }
+
+    /**
+     * Конкатенированный адрес
+     *
+     * @return string
+     */
+    public function getConcatShortValue(): string
+    {
+        $value = implode(' ', [
+            $this->getTopoShortName(),
+            $this->getTopoValue()
+        ]);
+
+        return trim($value);
+    }
 }

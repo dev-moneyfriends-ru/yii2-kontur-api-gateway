@@ -83,4 +83,28 @@ abstract class AbstractBaseCollection
     {
         return empty($this->items) === true;
     }
+
+    /**
+     * Количество записей
+     *
+     * @return int
+     */
+    public function length(): int
+    {
+        return count($this->items);
+    }
+
+    /**
+     * Список элементов в массив
+     *
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return array_map(
+            function (AbstractBaseObject $object) {
+                return $object->toArray();
+            }, $this->items
+        );
+    }
 }

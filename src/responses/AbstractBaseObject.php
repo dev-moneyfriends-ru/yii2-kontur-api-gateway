@@ -48,4 +48,23 @@ abstract class AbstractBaseObject extends BaseObject
 
         return $object;
     }
+
+    /**
+     * Объект в массив
+     *
+     * @return array
+     */
+    public function toArray(): array
+    {
+        $result = [];
+        $properties = get_object_vars($this);
+
+        foreach ($properties as $property => $value) {
+            if ($this->canGetProperty($property, false) === true) {
+                $result[$property] = $value;
+            }
+        }
+
+        return $result;
+    }
 }

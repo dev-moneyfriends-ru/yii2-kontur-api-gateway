@@ -130,4 +130,16 @@ class PetitionerOfArbitration extends AbstractBaseItem
     {
         $this->principalActivity = new ActivityShort($data);
     }
+
+    /**
+     * Дата в timestamp
+     *
+     * @return int|null
+     */
+    public function getLastCaseAt(): ?int
+    {
+        return $this->lastCaseDate === null ?
+            null :
+            strtotime($this->lastCaseDate);
+    }
 }

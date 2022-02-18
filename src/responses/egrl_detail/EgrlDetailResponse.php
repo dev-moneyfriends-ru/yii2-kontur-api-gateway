@@ -58,4 +58,14 @@ class EgrlDetailResponse extends AbstractCompanyResponse
     {
         $this->IP = new IPEgrlDetail($data);
     }
+
+    /**
+     * Субъект
+     *
+     * @return IPEgrlDetail|ULEgrlDetail|null
+     */
+    public function getSubject()
+    {
+        return $this->getUL() ?: $this->getIP();
+    }
 }

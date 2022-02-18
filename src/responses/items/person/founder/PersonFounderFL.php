@@ -107,4 +107,52 @@ class PersonFounderFL extends AbstractBaseItem
     {
         $this->pledges = new PledgeCollection($data);
     }
+
+    /**
+     * Имя
+     *
+     * @return string|null
+     */
+    public function getFirstName(): ?string
+    {
+        if ($this->fio === null) {
+            return null;
+        }
+
+        list(, $name,) = explode(' ', $this->fio) + [null, null, null];
+
+        return $name;
+    }
+
+    /**
+     * Фамилия
+     *
+     * @return string|null
+     */
+    public function getSecondName(): ?string
+    {
+        if ($this->fio === null) {
+            return null;
+        }
+
+        list(, , $name) = explode(' ', $this->fio) + [null, null, null];
+
+        return $name;
+    }
+
+    /**
+     * Отчество
+     *
+     * @return string|null
+     */
+    public function getLastName(): ?string
+    {
+        if ($this->fio === null) {
+            return null;
+        }
+
+        list($name, ,) = explode(' ', $this->fio) + [null, null, null];
+
+        return $name;
+    }
 }

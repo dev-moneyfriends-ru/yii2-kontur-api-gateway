@@ -20,8 +20,8 @@ use mfteam\kontur\responses\AbstractBaseItem;
  */
 class ItemBuhForm extends AbstractBaseItem
 {
-    /** @var int Код итоговой суммы баланса */
-    const CODE_BALANCE = 1300;
+    /** @var int Код баланса */
+    const CODE_BALANCE = 1600;
 
     /** @var int Код выручки с продаж */
     const CODE_PROFIT = 2110;

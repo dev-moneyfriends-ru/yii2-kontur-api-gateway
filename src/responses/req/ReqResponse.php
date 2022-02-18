@@ -23,6 +23,7 @@ use mfteam\kontur\responses\req\items\ULReq;
  * @package mfteam\kontur\responses
  *
  * @property ULReq|null $uL
+ * @property-read null|string $registrationDate
  * @property null|IPReq $iP
  */
 class ReqResponse extends AbstractCompanyResponse
@@ -148,5 +149,15 @@ class ReqResponse extends AbstractCompanyResponse
         $diff = $currentDateTime->diff($registrationDateTime);
 
         return $diff->y;
+    }
+
+    /**
+     * Субъект
+     *
+     * @return IPReq|ULReq|null
+     */
+    public function getSubject()
+    {
+        return $this->getUL() ?: $this->getIP();
     }
 }

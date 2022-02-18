@@ -64,4 +64,33 @@ class Address extends AbstractBaseItem
     {
         $this->parsedAddressRF = new AddressParsed($data);
     }
+
+    /**
+     * Полный адрес
+     *
+     * @return string|null
+     */
+    public function getFullAddress(): ?string
+    {
+        $parsedAddress = $this->getParsedAddressRF();
+        if ($parsedAddress === null) {
+            return null;
+        }
+
+        $address = [
+            $parsedAddress->getZipCode(),
+            $parsedAddress->getRegionName()->getConcatShortValue(),
+            $parsedAddress->getCity()->getConcatShortValue(),
+            $parsedAddress->getDistrict()->getConcatShortValue(),
+            $parsedAddress->getSettlement()->getConcatShortValue(),
+            $parsedAddress->getStreet()->getConcatShortValue(),
+            $parsedAddress->getHouseRaw(),
+            $parsedAddress->getBulkRaw(),
+            $parsedAddress->getFlatRaw(),
+        ];
+
+        $address = array_filter($address);
+
+        return implode(', ', $address);
+    }
 }

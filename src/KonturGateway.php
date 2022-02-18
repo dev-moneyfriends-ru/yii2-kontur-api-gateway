@@ -13,6 +13,7 @@ use mfteam\kontur\exceptions\KonturBadRequestException;
 use mfteam\kontur\exceptions\KonturForbiddenException;
 use mfteam\kontur\exceptions\KonturNotFoundException;
 use mfteam\kontur\exceptions\KonturTooManyRequestException;
+use mfteam\kontur\requests\company\CompanyRequest;
 use mfteam\kontur\requests\company\CompanyRequestInterface;
 use mfteam\kontur\requests\DateRequest;
 use mfteam\kontur\requests\PassportRequest;
@@ -39,6 +40,8 @@ use mfteam\kontur\responses\licences\LicencesResponse;
 use mfteam\kontur\responses\pep_search\PepSearchResponse;
 use mfteam\kontur\responses\person_bankruptcy\PersonBankruptcyResponse;
 use mfteam\kontur\responses\petitioners_of_arbitration\PetitionersOfArbitrationResponse;
+use mfteam\kontur\responses\purchases\PurchasesOfCustomerResponse;
+use mfteam\kontur\responses\purchases\PurchasesOfParticipantResponse;
 use mfteam\kontur\responses\req\ReqResponse;
 use mfteam\kontur\responses\brief_report\BriefReportResponse;
 use mfteam\kontur\responses\req_mon\ReqMonResponse;
@@ -761,6 +764,48 @@ class KonturGateway
 
         return $this
             ->createCollection($response, PepSearchResponse::class)
+            ->getItems();
+    }
+
+    /**
+     * Закупки заказчика
+     *
+     * @see https://developer.kontur.ru/doc/focus/method?type=get&path=%2Fapi3%2FpurchasesOfCustomer
+     *
+     * @param CompanyRequest $request
+     *
+     * @return PurchasesOfCustomerResponse[]
+     * @throws KonturBadRequestException
+     * @throws KonturForbiddenException
+     * @throws KonturTooManyRequestException
+     */
+    public function purchasesOfCustomer(CompanyRequest $request): array
+    {
+        $response = $this->get('purchasesOfCustomer', $request->toArray());
+
+        return $this
+            ->createCollection($response, PurchasesOfCustomerResponse::class)
+            ->getItems();
+    }
+
+    /**
+     * Закупки участника
+     *
+     * @see https://developer.kontur.ru/doc/focus/method?type=get&path=%2Fapi3%2FpurchasesOfParticipant
+     *
+     * @param CompanyRequest $request
+     *
+     * @return PurchasesOfParticipantResponse[]
+     * @throws KonturBadRequestException
+     * @throws KonturForbiddenException
+     * @throws KonturTooManyRequestException
+     */
+    public function purchasesOfParticipant(CompanyRequest $request): array
+    {
+        $response = $this->get('purchasesOfParticipant', $request->toArray());
+
+        return $this
+            ->createCollection($response, PurchasesOfParticipantResponse::class)
             ->getItems();
     }
 
