@@ -9,6 +9,7 @@
 namespace mfteam\kontur\responses\petitioners_of_arbitration;
 
 use mfteam\kontur\responses\AbstractCompanyResponse;
+use \mfteam\kontur\responses\petitioners_of_arbitration\items\PetitionerOfArbitrationCollection;
 
 /**
  * Статистика по истцам в арбитраже

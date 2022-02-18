@@ -6,7 +6,7 @@
  * Time: 15:20
  */
 
-namespace mfteam\kontur\responses\petitioners_of_arbitration;
+namespace mfteam\kontur\responses\petitioners_of_arbitration\items;
 
 use mfteam\kontur\helpers\KonturResponseHelper;
 use mfteam\kontur\responses\AbstractBaseCollection;
@@ -15,7 +15,7 @@ use mfteam\kontur\responses\AbstractBaseCollection;
  * Истцы
  *
  * Class PetitionerOfArbitrationCollection
- * @package mfteam\kontur\responses\petitioners_of_arbitration
+ * @package mfteam\kontur\responses\petitioners_of_arbitration\items
  *
  * @method PetitionerOfArbitration[] getItems()
  */

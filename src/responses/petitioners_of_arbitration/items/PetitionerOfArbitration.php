@@ -6,7 +6,7 @@
  * Time: 15:18
  */
 
-namespace mfteam\kontur\responses\petitioners_of_arbitration;
+namespace mfteam\kontur\responses\petitioners_of_arbitration\items;
 
 use mfteam\kontur\responses\AbstractBaseItem;
 use mfteam\kontur\responses\items\activity\ActivityShort;
@@ -15,7 +15,9 @@ use mfteam\kontur\responses\items\activity\ActivityShort;
  * Истец
  *
  * Class PetitionerOfArbitration
- * @package mfteam\kontur\responses\petitioners_of_arbitration
+ * @package mfteam\kontur\responses\petitioners_of_arbitration\items
+ *
+ * @property-read null|int $lastCaseAt
  */
 class PetitionerOfArbitration extends AbstractBaseItem
 {
