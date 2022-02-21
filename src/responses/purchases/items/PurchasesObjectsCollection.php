@@ -6,7 +6,7 @@
  * Time: 16:01
  */
 
-namespace mfteam\kontur\responses\req\items;
+namespace mfteam\kontur\responses\purchases\items;
 
 use mfteam\kontur\helpers\KonturResponseHelper;
 use mfteam\kontur\responses\AbstractBaseCollection;

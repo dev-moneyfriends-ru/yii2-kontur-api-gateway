@@ -6,7 +6,7 @@
  * Time: 16:02
  */
 
-namespace mfteam\kontur\responses\req\items;
+namespace mfteam\kontur\responses\purchases\items;
 
 use mfteam\kontur\responses\AbstractBaseItem;
 use mfteam\kontur\responses\items\company\CompanyCustomerCollection;
@@ -18,6 +18,8 @@ use mfteam\kontur\responses\items\misc\Price;
  *
  * Class Purchase
  * @package mfteam\kontur\responses\req\items
+ *
+ * @property-read int $countPurchaseObjects
  */
 class Purchase extends AbstractBaseItem
 {

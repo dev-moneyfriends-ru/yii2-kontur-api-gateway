@@ -10,7 +10,7 @@
 namespace mfteam\kontur\responses\purchases;
 
 use mfteam\kontur\responses\AbstractCompanyResponse;
-use mfteam\kontur\responses\req\items\PurchasesCollection;
+use mfteam\kontur\responses\purchases\items\PurchasesCollection;
 
 /**
  * Закупки заказчика

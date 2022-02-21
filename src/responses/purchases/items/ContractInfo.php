@@ -6,7 +6,7 @@
  * Time: 16:19
  */
 
-namespace mfteam\kontur\responses\req\items;
+namespace mfteam\kontur\responses\purchases\items;
 
 use mfteam\kontur\responses\AbstractBaseItem;
 use mfteam\kontur\responses\items\misc\Price;
