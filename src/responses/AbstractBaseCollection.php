@@ -2,13 +2,18 @@
 
 namespace mfteam\kontur\responses;
 
+use yii\base\BaseObject;
+
 /**
  * Базовая коллекция
  *
  * Class AbstractBaseCollection
  * @package mfteam\kontur\responses
+ *
+ * @property-read null|AbstractBaseObject $lastItem
+ * @property-read null|AbstractBaseObject $firstItem
  */
-abstract class AbstractBaseCollection
+abstract class AbstractBaseCollection extends BaseObject
 {
     /**
      * @var AbstractBaseObject[]
@@ -20,6 +25,8 @@ abstract class AbstractBaseCollection
      */
     public function __construct(array $data = [])
     {
+        parent::__construct();
+
         $this->setItems($data);
     }
 
