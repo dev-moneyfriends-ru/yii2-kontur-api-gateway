@@ -20,6 +20,8 @@ use yii\base\InvalidArgumentException;
  * @package mfteam\kontur\responses
  *
  * @method ResponseInterface[] getItems()
+ *
+ * @property-write string $responseClass
  */
 class CollectionResponse extends AbstractBaseCollection
 {
