@@ -67,4 +67,17 @@ abstract class AbstractBaseObject extends BaseObject
 
         return $result;
     }
+
+    /**
+     * Атрибут установлен
+     *
+     * @param string $attribute
+     * @return bool
+     */
+    public function hasValue(string $attribute): bool
+    {
+        return
+            $this->hasProperty($attribute) === true &&
+            $this->$attribute !== null;
+    }
 }

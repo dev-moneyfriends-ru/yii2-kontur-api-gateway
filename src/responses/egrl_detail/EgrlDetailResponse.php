@@ -13,6 +13,7 @@ use mfteam\kontur\responses\egrl_detail\items\ULEgrlDetail;
  * @package mfteam\kontur\responses\egrl_detail
  *
  * @property null|ULEgrlDetail $uL
+ * @property-read IPEgrlDetail|ULEgrlDetail|null $subject
  * @property null|IPEgrlDetail $iP
  */
 class EgrlDetailResponse extends AbstractCompanyResponse
