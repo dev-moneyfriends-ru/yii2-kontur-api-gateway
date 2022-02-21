@@ -13,7 +13,7 @@ abstract class AbstractBaseCollection
     /**
      * @var AbstractBaseObject[]
      */
-    protected $items = [];
+    private $items = [];
 
     /**
      * @param array $data
