@@ -20,7 +20,7 @@ use mfteam\kontur\responses\items\misc\Price;
 class ContractInfo extends AbstractBaseItem
 {
     /** @var string  */
-    const CACHE_ACCOUNT = 'cashAccount';
+    const CASH_ACCOUNT = 'cashAccount';
 
     /** @var string  */
     const BANK_GUARANTEE = 'bankGuarantee';

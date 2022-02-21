@@ -77,13 +77,19 @@ class Address extends AbstractBaseItem
             return null;
         }
 
+        $region = $parsedAddress->getRegionName();
+        $city = $parsedAddress->getCity();
+        $district = $parsedAddress->getDistrict();
+        $settlement = $parsedAddress->getSettlement();
+        $street = $parsedAddress->getStreet();
+
         $address = [
             $parsedAddress->getZipCode(),
-            $parsedAddress->getRegionName()->getConcatShortValue(),
-            $parsedAddress->getCity()->getConcatShortValue(),
-            $parsedAddress->getDistrict()->getConcatShortValue(),
-            $parsedAddress->getSettlement()->getConcatShortValue(),
-            $parsedAddress->getStreet()->getConcatShortValue(),
+            $region !== null ? $region->getConcatShortValue() : null,
+            $city !== null ? $city->getConcatShortValue() : null,
+            $district !== null ? $district->getConcatShortValue() : null,
+            $settlement !== null ? $settlement->getConcatShortValue() : null,
+            $street !== null ? $street->getConcatShortValue() : null,
             $parsedAddress->getHouseRaw(),
             $parsedAddress->getBulkRaw(),
             $parsedAddress->getFlatRaw(),
