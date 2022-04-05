@@ -2124,6 +2124,16 @@ class Analytics extends AbstractBaseItem
             return true;
         }
 
+        return $this->hasFactBankruptMarkers();
+    }
+
+    /**
+     * Является банкротом
+     *
+     * @return bool
+     */
+    public function hasFactBankruptMarkers(): bool
+    {
         $markers = [
             'm7014',
             'm7015',

@@ -56,6 +56,21 @@ class AnalyticsResponse extends AbstractCompanyResponse
     }
 
     /**
+     * Является банкротом
+     *
+     * @return bool
+     */
+    public function hasFactBankrupt(): bool
+    {
+        $analytics = $this->analytics;
+        if (empty($analytics) === true) {
+            return false;
+        }
+
+        return $analytics->hasFactBankruptMarkers();
+    }
+
+    /**
      * Имеются признаки арбитражных дел
      *
      * @return bool
