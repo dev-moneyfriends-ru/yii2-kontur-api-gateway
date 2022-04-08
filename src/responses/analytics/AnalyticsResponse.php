@@ -211,8 +211,10 @@ class AnalyticsResponse extends AbstractCompanyResponse
             return 0;
         }
 
-        return $this
-            ->analytics
-            ->getS1002();
+        $analytics = $this->analytics;
+
+        return $analytics->getS1002() !== null ?
+            $analytics->getS1002() :
+            0;
     }
 }
