@@ -38,6 +38,9 @@ class ItemBuhForm extends AbstractBaseItem
     /** @var int Код прибыли от продаж */
     const CODE_PROFIT_SALE = 2200;
 
+    /** @var int Код Выручка */
+    const CODE_REVENUE = 2110;
+
     /**
      * @var int|null
      */

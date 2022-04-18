@@ -238,4 +238,27 @@ class BuhForm extends AbstractBaseItem
 
         return null;
     }
+
+    /**
+     * Выручка
+     *
+     * @return int|null
+     */
+    public function getRevenueAmount(): ?int
+    {
+        $form = $this->form2;
+        if ($form === null) {
+            return null;
+        }
+
+        foreach ($form->getItems() as $item) {
+            $code = (int)$item->getCode();
+
+            if ($code === ItemBuhForm::CODE_REVENUE) {
+                return $item->getEndValue();
+            }
+        }
+
+        return null;
+    }
 }
