@@ -254,7 +254,7 @@ class BuhForm extends AbstractBaseItem
         foreach ($form->getItems() as $item) {
             $code = (int)$item->getCode();
 
-            if ($code === ItemBuhForm::CODE_REVENUE) {
+            if ($code === ItemBuhForm::CODE_PROFIT) {
                 return $item->getEndValue();
             }
         }
