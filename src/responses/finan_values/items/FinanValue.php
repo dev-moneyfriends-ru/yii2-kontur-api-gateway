@@ -49,6 +49,11 @@ class FinanValue extends AbstractBaseItem
     public const D = 'D';
 
     /**
+     * @var int|null
+     */
+    protected $year;
+
+    /**
      * @var float|null
      */
     protected $statisticalScore;
@@ -85,5 +90,13 @@ class FinanValue extends AbstractBaseItem
     public function getFocusHref(): ?string
     {
         return $this->focusHref;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getYear(): ?int
+    {
+        return $this->year;
     }
 }

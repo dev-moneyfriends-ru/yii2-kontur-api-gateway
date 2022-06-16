@@ -35,4 +35,12 @@ class ContactPhones extends AbstractBaseItem
     {
         return $this->count;
     }
+
+    /**
+     * @return array
+     */
+    public function getPhones(): array
+    {
+        return $this->phones;
+    }
 }
