@@ -22,4 +22,12 @@ class SitesResponse extends AbstractCompanyResponse
      * @var array
      */
     protected $sites = [];
+
+    /**
+     * @return array
+     */
+    public function getSites(): array
+    {
+        return $this->sites;
+    }
 }
