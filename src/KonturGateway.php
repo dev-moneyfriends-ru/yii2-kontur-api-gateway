@@ -13,6 +13,7 @@ use mfteam\kontur\exceptions\KonturBadRequestException;
 use mfteam\kontur\exceptions\KonturForbiddenException;
 use mfteam\kontur\exceptions\KonturNotFoundException;
 use mfteam\kontur\exceptions\KonturTooManyRequestException;
+use mfteam\kontur\requests\company\CompanyRangeRequest;
 use mfteam\kontur\requests\company\CompanyRequest;
 use mfteam\kontur\requests\company\CompanyRequestInterface;
 use mfteam\kontur\requests\DateRequest;
@@ -803,6 +804,27 @@ class KonturGateway
     public function purchasesOfParticipant(CompanyRequest $request): array
     {
         $response = $this->get('purchasesOfParticipant', $request->toArray());
+
+        return $this
+            ->createCollection($response, PurchasesOfParticipantResponse::class)
+            ->getItems();
+    }
+
+    /**
+     * Договоры лизинга
+     *
+     * @see https://developer.kontur.ru/doc/focus/method?type=get&path=/api3/lessee
+     *
+     * @param CompanyRangeRequest $request
+     *
+     * @return PurchasesOfParticipantResponse[]
+     * @throws KonturBadRequestException
+     * @throws KonturForbiddenException
+     * @throws KonturTooManyRequestException
+     */
+    public function lessee(CompanyRangeRequest $request): array
+    {
+        $response = $this->get('lessee', $request->toArray());
 
         return $this
             ->createCollection($response, PurchasesOfParticipantResponse::class)
