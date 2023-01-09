@@ -2165,7 +2165,7 @@ class Analytics extends AbstractBaseItem
 
         return array_filter(
             $properties,
-            function (?string $value, string $key) {
+            function ($value, string $key) {
                 $getter = "get" . ucfirst($key);
 
                 return
