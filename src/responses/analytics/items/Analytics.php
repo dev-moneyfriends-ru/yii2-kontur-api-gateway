@@ -2153,4 +2153,26 @@ class Analytics extends AbstractBaseItem
 
         return false;
     }
+
+    /**
+     * Список всех маркеров
+     *
+     * @return array
+     */
+    public function getAllMarkers(): array
+    {
+        $properties = get_object_vars($this);
+
+        return array_filter(
+            $properties,
+            function (?string $value, string $key) {
+                $getter = "get" . ucfirst($key);
+
+                return
+                    $value !== null &&
+                    method_exists($this, $getter) === true;
+            },
+            ARRAY_FILTER_USE_BOTH
+        );
+    }
 }
