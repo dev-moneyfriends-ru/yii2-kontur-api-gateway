@@ -37,6 +37,7 @@ use mfteam\kontur\responses\fssp\FsspResponse;
 use mfteam\kontur\responses\fts_debtors\FtsDebtorsResponse;
 use mfteam\kontur\responses\inspections\InspectionsResponse;
 use mfteam\kontur\responses\CollectionResponse;
+use mfteam\kontur\responses\lessee\LesseeResponse;
 use mfteam\kontur\responses\licences\LicencesResponse;
 use mfteam\kontur\responses\pep_search\PepSearchResponse;
 use mfteam\kontur\responses\person_bankruptcy\PersonBankruptcyResponse;
@@ -817,7 +818,7 @@ class KonturGateway
      *
      * @param CompanyRangeRequest $request
      *
-     * @return PurchasesOfParticipantResponse[]
+     * @return LesseeResponse[]
      * @throws KonturBadRequestException
      * @throws KonturForbiddenException
      * @throws KonturTooManyRequestException
@@ -827,7 +828,7 @@ class KonturGateway
         $response = $this->get('lessee', $request->toArray());
 
         return $this
-            ->createCollection($response, PurchasesOfParticipantResponse::class)
+            ->createCollection($response, LesseeResponse::class)
             ->getItems();
     }
 
