@@ -50,11 +50,11 @@ class CompanyRequest implements CompanyRequestInterface
      *
      * @param string $value
      *
-     * @return CompanyRequest
+     * @return CompanyRequestInterface
      */
-    public static function byInn(string $value): CompanyRequest
+    public static function byInn(string $value): CompanyRequestInterface
     {
-        $instance = new self();
+        $instance = new static();
         $instance->setInn($value);
 
         return $instance;
@@ -65,11 +65,11 @@ class CompanyRequest implements CompanyRequestInterface
      *
      * @param string $value
      *
-     * @return CompanyRequest
+     * @return CompanyRequestInterface
      */
-    public static function byOgrn(string $value): CompanyRequest
+    public static function byOgrn(string $value): CompanyRequestInterface
     {
-        $instance = new self();
+        $instance = new static();
         $instance->setOgrn($value);
 
         return $instance;
