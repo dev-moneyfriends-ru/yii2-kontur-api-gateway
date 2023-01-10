@@ -203,7 +203,7 @@ class KonturGateway
     /**
      * Показатели бухгалтерской отчетности
      *
-     * @see https://developer.kontur.ru/doc/focus/method?type=get&path=%2Fapi3%2Fbuh
+     * @see https://developer.kontur.ru/doc/focus/method?type=get&path=%2Fapi3%2FaccountingReports
      *
      * @param CompanyRequestInterface $request
      *
@@ -213,6 +213,29 @@ class KonturGateway
      * @throws KonturTooManyRequestException
      */
     public function buh(CompanyRequestInterface $request): array
+    {
+        $response = $this->get('accountingReports', $request->toArray());
+
+        return $this
+            ->createCollection($response, BuhResponse::class)
+            ->getItems();
+    }
+
+    /**
+     * Показатели бухгалтерской отчетности
+     *
+     * @see https://developer.kontur.ru/doc/focus/method?type=get&path=%2Fapi3%2Fbuh
+     *
+     * @param CompanyRequestInterface $request
+     *
+     * @return BuhResponse[]
+     * @throws KonturBadRequestException
+     * @throws KonturForbiddenException
+     * @throws KonturTooManyRequestException
+     *
+     * @deprecated
+     */
+    public function buhOld(CompanyRequestInterface $request): array
     {
         $response = $this->get('buh', $request->toArray());
 

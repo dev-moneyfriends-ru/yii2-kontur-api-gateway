@@ -54,6 +54,21 @@ class BuhForm extends AbstractBaseItem
     protected $form2;
 
     /**
+     * @var ItemBuhFormCollection|null
+     */
+    protected $form3;
+
+    /**
+     * @var ItemBuhFormCollection|null
+     */
+    protected $form4;
+
+    /**
+     * @var ItemBuhFormCollection|null
+     */
+    protected $form6;
+
+    /**
      * @return int|null
      */
     public function getYear(): ?int
@@ -86,6 +101,30 @@ class BuhForm extends AbstractBaseItem
     }
 
     /**
+     * @return ItemBuhFormCollection|null
+     */
+    public function getForm3(): ?ItemBuhFormCollection
+    {
+        return $this->form3;
+    }
+
+    /**
+     * @return ItemBuhFormCollection|null
+     */
+    public function getForm4(): ?ItemBuhFormCollection
+    {
+        return $this->form4;
+    }
+
+    /**
+     * @return ItemBuhFormCollection|null
+     */
+    public function getForm6(): ?ItemBuhFormCollection
+    {
+        return $this->form6;
+    }
+
+    /**
      * @param array $data
      */
     public function setForm1(array $data = []): void
@@ -99,6 +138,30 @@ class BuhForm extends AbstractBaseItem
     public function setForm2(array $data = []): void
     {
         $this->form2 = new ItemBuhFormCollection($data);
+    }
+
+    /**
+     * @param array $data
+     */
+    public function setForm3(array $data = []): void
+    {
+        $this->form3 = new ItemBuhFormCollection($data);
+    }
+
+    /**
+     * @param array $data
+     */
+    public function setForm4(array $data = []): void
+    {
+        $this->form4 = new ItemBuhFormCollection($data);
+    }
+
+    /**
+     * @param array $data
+     */
+    public function setForm6(array $data = []): void
+    {
+        $this->form6 = new ItemBuhFormCollection($data);
     }
 
     /**
