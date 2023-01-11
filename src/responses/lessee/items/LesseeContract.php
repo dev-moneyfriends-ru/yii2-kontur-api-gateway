@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace mfteam\kontur\responses\lessee\items;
 
+use mfteam\kontur\responses\AbstractBaseItem;
 use mfteam\kontur\responses\items\document\Contract;
 use mfteam\kontur\responses\items\misc\DatePeriod;
 
@@ -13,7 +14,7 @@ use mfteam\kontur\responses\items\misc\DatePeriod;
  * Class LesseeContract
  * @package mfteam\kontur\responses\lessee\items
  */
-class LesseeContract
+class LesseeContract extends AbstractBaseItem
 {
     /**
      * Номер договора
