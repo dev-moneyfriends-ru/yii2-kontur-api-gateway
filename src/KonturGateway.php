@@ -22,6 +22,7 @@ use mfteam\kontur\requests\person\PersonRequest;
 use mfteam\kontur\requests\person\PersonRequestInterface;
 use mfteam\kontur\responses\analytics\AnalyticsResponse;
 use mfteam\kontur\responses\bank_accounts\BankAccountsResponse;
+use mfteam\kontur\responses\bank_guarantees\BankGuaranteesResponse;
 use mfteam\kontur\responses\beneficial_owners\BeneficialOwnersResponse;
 use mfteam\kontur\responses\buh\BuhResponse;
 use mfteam\kontur\responses\check_passport\CheckPassportResponse;
@@ -493,6 +494,25 @@ class KonturGateway
 
         return $this
             ->createCollection($response, SitesResponse::class)
+            ->getItems();
+    }
+
+    /**
+     * Банковские гарантии
+     * @see https://developer.kontur.ru/doc/focus/method?type=get&path=%2Fapi3%2FbankGuarantees
+     *
+     * @param CompanyRequestInterface $request
+     * @return BankGuaranteesResponse[]
+     * @throws KonturBadRequestException
+     * @throws KonturForbiddenException
+     * @throws KonturTooManyRequestException
+     */
+    public function bankGuarantees(CompanyRequestInterface $request): array
+    {
+        $response = $this->get('bankGuarantees', $request->toArray());
+
+        return $this
+            ->createCollection($response, BankGuaranteesResponse::class)
             ->getItems();
     }
 

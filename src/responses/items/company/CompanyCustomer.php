@@ -11,7 +11,7 @@ namespace mfteam\kontur\responses\items\company;
 use mfteam\kontur\responses\AbstractBaseItem;
 
 /**
- * Заказчик
+ * Компания
  *
  * Class CompanyCustomer
  * @package mfteam\kontur\responses\items\company
