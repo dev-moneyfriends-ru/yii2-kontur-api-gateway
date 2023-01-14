@@ -108,4 +108,92 @@ class BankGuarantee extends AbstractBaseItem
     {
         $this->bank = new CompanyCustomer($data);
     }
+
+    /**
+     * @return string
+     */
+    public function getNumber(): string
+    {
+        return $this->number;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getReleaseDate(): ?string
+    {
+        return $this->releaseDate;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getStartDate(): ?string
+    {
+        return $this->startDate;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getEndDate(): ?string
+    {
+        return $this->endDate;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAssuranceType(): string
+    {
+        return $this->assuranceType;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPurchaseNumber(): string
+    {
+        return $this->purchaseNumber;
+    }
+
+    /**
+     * @return CompanyCustomer
+     */
+    public function getBank(): CompanyCustomer
+    {
+        return $this->bank;
+    }
+
+    /**
+     * @return CompanyCustomer
+     */
+    public function getPrincipal(): CompanyCustomer
+    {
+        return $this->principal;
+    }
+
+    /**
+     * @return CompanyCustomer
+     */
+    public function getBeneficiary(): CompanyCustomer
+    {
+        return $this->beneficiary;
+    }
+
+    /**
+     * @return Price
+     */
+    public function getGuaranteeSum(): Price
+    {
+        return $this->guaranteeSum;
+    }
 }
