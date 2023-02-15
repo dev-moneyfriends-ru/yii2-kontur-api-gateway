@@ -6,7 +6,7 @@
  * Time: 16:34
  */
 
-namespace mfteam\kontur\responses\items\violations;
+namespace mfteam\kontur\responses\items\violation;
 
 use mfteam\kontur\responses\AbstractBaseItem;
 
@@ -14,7 +14,7 @@ use mfteam\kontur\responses\AbstractBaseItem;
  * Проверка
  *
  * Class Violation
- * @package mfteam\kontur\responses\items\violations
+ * @package mfteam\kontur\responses\items\violation
  */
 class Violation extends AbstractBaseItem
 {

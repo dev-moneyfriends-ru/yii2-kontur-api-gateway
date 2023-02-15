@@ -9,7 +9,7 @@
 namespace mfteam\kontur\responses\inspections\items;
 
 use mfteam\kontur\responses\AbstractBaseItem;
-use mfteam\kontur\responses\items\violations\ViolationCollection;
+use mfteam\kontur\responses\items\violation\ViolationCollection;
 
 /**
  * Проверка

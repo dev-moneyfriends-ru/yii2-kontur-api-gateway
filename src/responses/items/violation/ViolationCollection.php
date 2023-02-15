@@ -6,7 +6,7 @@
  * Time: 16:36
  */
 
-namespace mfteam\kontur\responses\items\violations;
+namespace mfteam\kontur\responses\items\violation;
 
 use mfteam\kontur\helpers\KonturResponseHelper;
 use mfteam\kontur\responses\AbstractBaseCollection;
@@ -15,7 +15,7 @@ use mfteam\kontur\responses\AbstractBaseCollection;
  * Нарушения
  *
  * Class ViolationCollection
- * @package mfteam\kontur\responses\items\violations
+ * @package mfteam\kontur\responses\items\violation
  *
  * @method Violation[] getItems()
  */

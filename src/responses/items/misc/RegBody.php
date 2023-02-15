@@ -13,79 +13,79 @@ use mfteam\kontur\responses\AbstractBaseItem;
 class RegBody extends AbstractBaseItem
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $nalogCode;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $nalogName;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $nalogRegDate;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $nalogRegAddress;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $kpp;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $date;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getNalogCode(): string
+    public function getNalogCode(): ?string
     {
         return $this->nalogCode;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getNalogName(): string
+    public function getNalogName(): ?string
     {
         return $this->nalogName;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getNalogRegDate(): string
+    public function getNalogRegDate(): ?string
     {
         return $this->nalogRegDate;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getKpp(): string
+    public function getKpp(): ?string
     {
         return $this->kpp;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getDate(): string
+    public function getDate(): ?string
     {
         return $this->date;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getNalogRegAddress(): string
+    public function getNalogRegAddress(): ?string
     {
         return $this->nalogRegAddress;
     }
