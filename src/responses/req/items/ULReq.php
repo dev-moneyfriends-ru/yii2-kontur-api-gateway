@@ -11,6 +11,7 @@ namespace mfteam\kontur\responses\req\items;
 use mfteam\kontur\responses\AbstractBaseItem;
 use mfteam\kontur\responses\items\address\Address;
 use mfteam\kontur\responses\items\company\CompanyBranchCollection;
+use mfteam\kontur\responses\items\company\CompanyHistory;
 use mfteam\kontur\responses\items\company\CompanyName;
 use mfteam\kontur\responses\items\company\CompanyULStatus;
 use mfteam\kontur\responses\items\person\PersonPositionCollection;
@@ -103,6 +104,10 @@ class ULReq extends AbstractBaseItem
      * @var CompanyBranchCollection|null
      */
     protected $branches;
+    /**
+     * @var CompanyHistory|null
+     */
+    protected $history;
 
     /**
      * @return string|null
@@ -279,5 +284,21 @@ class ULReq extends AbstractBaseItem
     public function setBranches(array $data = []): void
     {
         $this->branches = new CompanyBranchCollection($data);
+    }
+
+    /**
+     * @return CompanyHistory|null
+     */
+    public function getHistory(): ?CompanyHistory
+    {
+        return $this->history;
+    }
+
+    /**
+     * @param array $data
+     */
+    public function setHistory(array $data = []): void
+    {
+        $this->history = new CompanyHistory($data);
     }
 }
