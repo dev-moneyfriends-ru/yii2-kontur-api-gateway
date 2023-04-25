@@ -29,7 +29,6 @@ class Kpp extends AbstractBaseItem
     {
         return $this->kpp;
     }
-
     /**
      * @param string|null $kpp
      */
@@ -45,7 +44,6 @@ class Kpp extends AbstractBaseItem
     {
         return $this->date;
     }
-
     /**
      * @param string|null $date
      */

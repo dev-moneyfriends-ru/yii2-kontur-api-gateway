@@ -123,17 +123,17 @@ class ManagementCompany extends AbstractBaseItem
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function isInaccuracy(): bool
+    public function isInaccuracy(): ?bool
     {
         return $this->isInaccuracy;
     }
 
     /**
-     * @param bool $isInaccuracy
+     * @param bool|null $isInaccuracy
      */
-    public function setIsInaccuracy(bool $isInaccuracy): void
+    public function setIsInaccuracy(?bool $isInaccuracy): void
     {
         $this->isInaccuracy = $isInaccuracy;
     }
