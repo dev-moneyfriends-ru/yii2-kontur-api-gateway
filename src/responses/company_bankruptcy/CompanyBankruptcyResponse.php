@@ -10,7 +10,8 @@ namespace mfteam\kontur\responses\company_bankruptcy;
 
 
 use mfteam\kontur\responses\AbstractCompanyResponse;
-use mfteam\kontur\responses\ArbitrManagerBankruptcyCollection;
+use mfteam\kontur\responses\company_bankruptcy\items\ArbitrManagerBankruptcy;
+use mfteam\kontur\responses\company_bankruptcy\items\ArbitrManagerBankruptcyCollection;
 use mfteam\kontur\responses\items\bankruptcy\StageCollection;
 use mfteam\kontur\responses\items\message\MessageCollection;
 
@@ -43,7 +44,7 @@ class CompanyBankruptcyResponse extends AbstractCompanyResponse
     protected $stageDate;
 
     /**
-     * @var ArbitrManagerBankruptcyCollection|null
+     * @var ArbitrManagerBankruptcy|null
      */
     protected $arbitrManager;
 
@@ -90,9 +91,9 @@ class CompanyBankruptcyResponse extends AbstractCompanyResponse
     }
 
     /**
-     * @return ArbitrManagerBankruptcyCollection|null
+     * @return ArbitrManagerBankruptcy|null
      */
-    public function getArbitrManager(): ?ArbitrManagerBankruptcyCollection
+    public function getArbitrManager(): ?ArbitrManagerBankruptcy
     {
         return $this->arbitrManager;
     }
@@ -114,11 +115,11 @@ class CompanyBankruptcyResponse extends AbstractCompanyResponse
     }
 
     /**
-     * @param array $data
+     * @param ArbitrManagerBankruptcy $data
      */
     public function setArbitrManager(array $data = []): void
     {
-        $this->arbitrManager = new ArbitrManagerBankruptcyCollection($data);
+        $this->arbitrManager = new  ArbitrManagerBankruptcy($data);
     }
 
     /**

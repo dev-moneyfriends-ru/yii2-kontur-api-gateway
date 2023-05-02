@@ -6,10 +6,10 @@
  * Time: 10:32
  */
 
-namespace mfteam\kontur\responses;
+namespace mfteam\kontur\responses\company_bankruptcy\items;
 
 use mfteam\kontur\helpers\KonturResponseHelper;
-
+use mfteam\kontur\responses\AbstractBaseCollection;
 /**
  * Арбитражные управляющие
  *

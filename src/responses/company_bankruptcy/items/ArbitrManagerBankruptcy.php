@@ -6,8 +6,8 @@
  * Time: 10:30
  */
 
-namespace mfteam\kontur\responses;
-
+namespace mfteam\kontur\responses\company_bankruptcy\items;
+use mfteam\kontur\responses\AbstractBaseItem;
 /**
  * Арбитражный управляющий
  *
