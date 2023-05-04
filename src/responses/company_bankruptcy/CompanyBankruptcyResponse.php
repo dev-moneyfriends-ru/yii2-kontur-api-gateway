@@ -114,8 +114,9 @@ class CompanyBankruptcyResponse extends AbstractCompanyResponse
         return $this->messages;
     }
 
+
     /**
-     * @param ArbitrManagerBankruptcy $data
+     * @param array $data
      */
     public function setArbitrManager(array $data = []): void
     {
